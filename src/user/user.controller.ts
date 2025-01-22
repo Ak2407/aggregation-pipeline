@@ -5,6 +5,11 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Get()
+  async getAllUsers() {
+    return this.userService.findAllUsers();
+  }
+
   @Get('eye-color')
   async getUsersByEyeColor(@Query('eyeColor') eyeColor: string) {
     return this.userService.findUsersByEyeColorAndSort(eyeColor);

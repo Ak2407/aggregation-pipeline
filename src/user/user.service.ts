@@ -7,6 +7,11 @@ import { User } from './user.schema';
 export class UserService {
   constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
+  // Find all users
+  async findAllUsers() {
+    return this.userModel.find();
+  }
+
   // Find all users with a specific eye color and sort by age
   async findUsersByEyeColorAndSort(eyeColor: string) {
     return this.userModel.aggregate([
